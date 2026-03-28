@@ -34,8 +34,8 @@ Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open
 > [!tip]
 > hook 放哪里都行，settings 里路径指对就行。放 `.claude` 根目录也行，不强制套目录。
 
-1. 复制 `hook.sh` 到任意位置，如 `~/.claude/auto-open-obsidian.sh`
-   / Copy `hook.sh` anywhere, e.g. `~/.claude/auto-open-obsidian.sh`
+1. 复制 `auto-open-obsidian.sh` 到任意位置，如 `~/.claude/auto-open-obsidian.sh`
+   / Copy `auto-open-obsidian.sh` anywhere, e.g. `~/.claude/auto-open-obsidian.sh`
 
 2. 在你 `~/.claude/settings.json` 的 `hooks.PostToolUse` 里加入（路径改成你实际的）：
    / Add to your `hooks.PostToolUse` array in `~/.claude/settings.json`:
@@ -79,9 +79,8 @@ tail -f /tmp/auto-open-obsidian.log
 
 ```
 obsidian-auto-open-hook/
-├── hook.sh           # Hook 脚本 / Hook script
+├── auto-open-obsidian.sh           # Hook 脚本 / Hook script
 ├── README.md
-├── CLAUDE.md
 ├── LICENSE
 └── .gitignore
 ```
