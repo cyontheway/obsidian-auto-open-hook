@@ -31,11 +31,14 @@ Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open
 
 ### 安装 / Installation
 
-1. 复制 `hook.sh` 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
-   / Copy `hook.sh` to `~/.claude/hooks/auto-open-obsidian/hook.sh`
+> [!tip]
+> hook 放哪里都行，settings.json 里的路径指对就行。放 `.claude` 根目录也行，不强制套目录。
 
-2. 在 `~/.claude/settings.json` 中添加配置（参考根目录 `settings.json`）
-   / Add config to `~/.claude/settings.json` (see `settings.json` for reference)
+1. 复制 `hook.sh` 到任意位置，例如 `~/.claude/hooks/auto-open-obsidian/hook.sh` 或直接 `~/.claude/auto-open-obsidian.sh`
+   / Copy `hook.sh` anywhere, e.g. `~/.claude/hooks/auto-open-obsidian/hook.sh` or just `~/.claude/auto-open-obsidian.sh`
+
+2. 在 `~/.claude/settings.json` 中添加配置（参考根目录 `settings.json`，把路径改成你实际放的位置）
+   / Add config to `~/.claude/settings.json` (see `settings.json` for reference, update the path to your actual location)
 
 3. 重启 Claude Code / Restart Claude Code
 
