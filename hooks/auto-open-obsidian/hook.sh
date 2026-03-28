@@ -53,15 +53,32 @@ if [[ "$FILE_PATH" != /* ]]; then
   echo "[$(date '+%H:%M:%S')] Converted to absolute: $FILE_PATH" >> "$LOG"
 fi
 
-# 检查是否在汪库内
-PROJECT_DIR="/Users/clorisyu/Personal/1/ob legal study_副本"
-if [[ ! "$FILE_PATH" == "$PROJECT_DIR"* ]]; then
-  echo "[$(date '+%H:%M:%S')] Skip: not in project dir" >> "$LOG"
+# 获取 Vault 路径（支持多 vault）
+# 方式 1：环境变量（推荐）
+#   export OBSIDIAN_VAULT_PATH="/path/to/your/vault"
+# 方式 2：从 obsidian CLI 配置推断（默认取第一个 vault）
+VAULT_PATH="${OBSIDIAN_VAULT_PATH:-}"
+
+if [ -z "$VAULT_PATH" ]; then
+  # 从 obsidian CLI 获取 vault 列表的第一个
+  VAULT_PATH=$(obsidian vault list 2>/dev/null | head -1 | sed 's/^.*: //')
+fi
+
+if [ -z "$VAULT_PATH" ]; then
+  echo "[$(date '+%H:%M:%S')] Error: OBSIDIAN_VAULT_PATH not set and cannot detect vault" >> "$LOG"
+  exit 1
+fi
+
+echo "[$(date '+%H:%M:%S')] Vault: $VAULT_PATH" >> "$LOG"
+
+# 检查是否在目标 Vault 内
+if [[ ! "$FILE_PATH" == "$VAULT_PATH"* ]]; then
+  echo "[$(date '+%H:%M:%S')] Skip: not in target vault ($VAULT_PATH)" >> "$LOG"
   exit 0
 fi
 
 # 转换为相对路径
-REL_PATH="${FILE_PATH#$PROJECT_DIR/}"
+REL_PATH="${FILE_PATH#$VAULT_PATH/}"
 echo "[$(date '+%H:%M:%S')] Opening: $REL_PATH" >> "$LOG"
 
 # 打开文件（静默执行，不阻塞）

@@ -28,9 +28,20 @@ Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。
 
 **安装：**
 
-1. 复制 hook.sh 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
-2. 在 `~/.claude/settings.json` 中添加配置（参考 `hooks/auto-open-obsidian/settings.json`）
+1. 复制 `hooks/auto-open-obsidian/hook.sh` 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
+2. 复制 `hooks/auto-open-obsidian/settings.json` 到 `~/.claude/settings.json`（或合并到现有配置）
 3. 重启 Claude Code
+
+**配置 Vault 路径（必须）：**
+
+方式一：设置环境变量（推荐）
+
+```bash
+# 在终端或 shell 配置文件中添加
+export OBSIDIAN_VAULT_PATH="/path/to/your/obsidian/vault"
+```
+
+方式二：不设置 — hook 会自动从 `obsidian vault list` 取第一个 vault
 
 **调试：**
 
