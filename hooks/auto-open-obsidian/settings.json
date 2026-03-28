@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "/Users/clorisyu/.claude/hooks/auto-open-obsidian/hook.sh",
+            "timeout": 3,
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit|Write"
+      }
+    ]
+  }
+}
