@@ -1,13 +1,13 @@
 # CLAUDE.md
 
-Claude Code Hooks 存档仓库。/ Archive repo for Claude Code hooks.
+Claude Code PostToolUse Hook for Obsidian.
 
-## 结构 / Structure
+## 结构
 
-- `hooks/` — 各 Hook 脚本目录 / Hook script directories
-- 每个 Hook 独立文件夹，包含 `hook.sh` 和 `settings.json` / Each hook in its own folder with `hook.sh` and `settings.json`
+- `hook.sh` — Hook 脚本
+- `settings.json` — Claude Code 配置
 
-## 约定 / Conventions
+## 约定
 
 - MIT License
 - Hook 脚本需有执行权限 (`chmod +x hook.sh`)

@@ -1,10 +1,12 @@
-# Claude Hooks
+# Obsidian Auto Open Hook
 
-个人Claude Code Hooks 集合 / Collection of Personal Claude Code Hooks
+Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md 文件 / Auto-open .md files in Obsidian after Edit/Write.
 
 ## 目录 / Table of Contents
 
-- [auto-open-obsidian](#auto-open-obsidian)
+- [安装 / Installation](#安装--installation)
+- [配置 Vault 路径 / Configure Vault Path](#配置-vault-路径--configure-vault-path)
+- [调试 / Debugging](#调试--debugging)
 - [目录结构 / Directory Structure](#目录结构--directory-structure)
 - [使用许可 / License](#使用许可--license)
 
@@ -13,7 +15,10 @@
 ## auto-open-obsidian
 
 因为用 ob 比较多，让cc操作ob是很方便，但是每次ta改完笔记我要去ob手动打开 .md，略烦（即使开了同屏还是要自己操作下）。所以让cc给写了这个PostToolUse Hook 自动打开修改后的 .md 文件。我试过Pre的，感觉会让 cc 太忙了，所以最后用的还是Post方案，改完再打开。
-还有个tips，我因为不太开 VS Code，每次就是半盲改（终端看diff真的不习惯）SKILL.md 和 CLAUDE.md，然后我又很爱改，所以干脆把这些的原文件都放在自己常用的ob库下面，反过来在.claude目录下面只放软链接。配合着前面这个Hook，连改这些配置类的 .md 都丝滑起来了😁。
+
+> [!tips]
+> 还有个tips，我因为不太开 VS Code，每次就是半盲改（终端看diff真的不习惯）SKILL.md 和 CLAUDE.md，然后我又很爱改，所以干脆把这些的原文件都放在自己常用的ob库下面，反过来在.claude目录下面只放软链接。配合着前面这个Hook，连改这些配置类的 .md 都丝滑起来了😁。
+> 
 
 Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open .md files in Obsidian after Edit/Write.
 
@@ -26,10 +31,10 @@ Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open
 
 ### 安装 / Installation
 
-1. 复制 `hooks/auto-open-obsidian/hook.sh` 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
+1. 复制 `hook.sh` 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
    / Copy `hook.sh` to `~/.claude/hooks/auto-open-obsidian/hook.sh`
 
-2. 在 `~/.claude/settings.json` 中添加配置（参考 `hooks/auto-open-obsidian/settings.json`）
+2. 在 `~/.claude/settings.json` 中添加配置（参考根目录 `settings.json`）
    / Add config to `~/.claude/settings.json` (see `settings.json` for reference)
 
 3. 重启 Claude Code / Restart Claude Code
@@ -58,15 +63,13 @@ tail -f /tmp/auto-open-obsidian.log
 ## 目录结构 / Directory Structure
 
 ```
-claude-hooks/
-├── hooks/                      # Hook 脚本 / Hook scripts
-│   └── auto-open-obsidian/
-│       ├── hook.sh             # Hook 脚本 / Hook script
-│       └── settings.json       # 配置示例 / Config example
-├── .gitignore
-├── CLAUDE.md                   # 项目说明 / Project notes
-├── LICENSE                     # MIT License
-└── README.md                   # 本文件 / This file
+obsidian-auto-open-hook/
+├── hook.sh           # Hook 脚本 / Hook script
+├── settings.json     # Claude Code 配置示例 / Config for Claude Code
+├── README.md
+├── CLAUDE.md
+├── LICENSE
+└── .gitignore
 ```
 
 ---
