@@ -12,7 +12,8 @@
 
 ## auto-open-obsidian
 
-因为用 ob 比较多，让cc操作ob是很方便，但是每次ta改完笔记我要去ob手动打开 .md，略烦（即使开了同屏还是要自己操作下）。所以让cc给写了这 Hook 自动打开.md文件。这句没有翻译。
+因为用 ob 比较多，让cc操作ob是很方便，但是每次ta改完笔记我要去ob手动打开 .md，略烦（即使开了同屏还是要自己操作下）。所以让cc给写了这个PostToolUse Hook 自动打开修改后的 .md 文件。我试过Pre的，感觉会让 cc 太忙了，所以最后用的还是Post方案，改完再打开。
+还有个tips，我因为不太开 VS Code，每次就是半盲改（终端看diff真的不习惯）SKILL.md 和 CLAUDE.md，然后我又很爱改，所以干脆把这些的原文件都放在自己常用的ob库下面，反过来在.claude目录下面只放软链接。配合着前面这个Hook，连改这些配置类的 .md 都丝滑起来了😁。
 
 Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open .md files in Obsidian after Edit/Write.
 
