@@ -1,57 +1,77 @@
 # Claude Hooks
 
-Claude Code Hooks 集合，方便发布和管理。
+Claude Code Hooks 集合 / Collection of Claude Code Hooks
 
-## 目录结构
+---
 
-```
-claude-hooks/
-├── hooks/              # Hook 脚本
-│   └── auto-open-obsidian/
-│       ├── hook.sh     # Hook 脚本
-│       └── settings.json # 配置示例
-├── CLAUDE.md           # 项目说明
-└── README.md           # 本文件
-```
+## 目录 / Table of Contents
 
-## 已收录 Hooks
+- [auto-open-obsidian](#auto-open-obsidian)
+- [目录结构 / Directory Structure](#目录结构--directory-structure)
+- [使用许可 / License](#使用许可--license)
 
-### auto-open-obsidian
+---
 
-Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。
+## auto-open-obsidian
 
-**功能：**
-- 只响应 `.md` 文件
-- 自动转换相对路径为绝对路径
-- 后台执行，不阻塞工作流
-- 完整的日志记录
+Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open .md files in Obsidian after Edit/Write.
 
-**安装：**
+### 功能 / Features
+
+- 只响应 `.md` 文件 / Only responds to `.md` files
+- 自动转换相对路径为绝对路径 / Auto-convert relative paths to absolute
+- 后台执行，不阻塞工作流 / Non-blocking background execution
+- 完整的日志记录 / Full logging
+
+### 安装 / Installation
 
 1. 复制 `hooks/auto-open-obsidian/hook.sh` 到 `~/.claude/hooks/auto-open-obsidian/hook.sh`
-2. 复制 `hooks/auto-open-obsidian/settings.json` 到 `~/.claude/settings.json`（或合并到现有配置）
-3. 重启 Claude Code
+   / Copy `hook.sh` to `~/.claude/hooks/auto-open-obsidian/hook.sh`
 
-**配置 Vault 路径（必须）：**
+2. 在 `~/.claude/settings.json` 中添加配置（参考 `hooks/auto-open-obsidian/settings.json`）
+   / Add config to `~/.claude/settings.json` (see `settings.json` for reference)
 
-方式一：设置环境变量（推荐）
+3. 重启 Claude Code / Restart Claude Code
+
+### 配置 Vault 路径 / Configure Vault Path
+
+**方式一：环境变量（推荐）/ Method 1: Environment Variable (Recommended)**
 
 ```bash
-# 在终端或 shell 配置文件中添加
+# 在终端或 shell 配置文件中添加 / Add to terminal or shell config
 export OBSIDIAN_VAULT_PATH="/path/to/your/obsidian/vault"
 ```
 
-方式二：不设置 — hook 会自动从 `obsidian vault list` 取第一个 vault
+**方式二：不设置 / Method 2: No Config**
 
-**调试：**
+不设置则自动从 `obsidian vault list` 取第一个 vault / If not set, auto-detects first vault from `obsidian vault list`
+
+### 调试 / Debugging
 
 ```bash
 tail -f /tmp/auto-open-obsidian.log
 ```
 
-## 贡献新 Hook
+---
 
-欢迎提交 PR！每个 Hook 放在 `hooks/<hook-name>/` 下，包含：
-- `hook.sh` — Hook 脚本
-- `settings.json` — 配置示例
-- `README.md` — 使用说明（如需要）
+## 目录结构 / Directory Structure
+
+```
+claude-hooks/
+├── hooks/                      # Hook 脚本 / Hook scripts
+│   └── auto-open-obsidian/
+│       ├── hook.sh             # Hook 脚本 / Hook script
+│       └── settings.json       # 配置示例 / Config example
+├── .gitignore
+├── CLAUDE.md                   # 项目说明 / Project notes
+├── LICENSE                     # MIT License
+└── README.md                   # 本文件 / This file
+```
+
+---
+
+## 使用许可 / License
+
+本项目采用 MIT License开源，可自由使用、修改、分发。/ This project is open source under MIT License. Free to use, modify, and distribute.
+
+完整许可文本见 `LICENSE` 文件。/ See `LICENSE` file for full license text.
