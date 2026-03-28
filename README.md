@@ -1,8 +1,6 @@
 # Claude Hooks
 
-Claude Code Hooks 集合 / Collection of Claude Code Hooks
-
----
+个人Claude Code Hooks 集合 / Collection of Personal Claude Code Hooks
 
 ## 目录 / Table of Contents
 
@@ -13,6 +11,8 @@ Claude Code Hooks 集合 / Collection of Claude Code Hooks
 ---
 
 ## auto-open-obsidian
+
+因为用 ob 比较多，让cc操作ob是很方便，但是每次ta改完笔记我要去ob手动打开 .md，略烦（即使开了同屏还是要自己操作下）。所以让cc给写了这 Hook 自动打开.md文件。这句没有翻译。
 
 Edit/Write Obsidian 笔记后，自动在 Obsidian 中打开文件。/ Auto-open .md files in Obsidian after Edit/Write.
 
