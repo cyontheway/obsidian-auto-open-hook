@@ -128,21 +128,18 @@ if [[ ! "$FILE_PATH" == "$VAULT_PATH"* ]]; then
   exit 0
 fi
 
-# 转换为相对路径（日志用）
+# 转换为相对路径
 REL_PATH="${FILE_PATH#$VAULT_PATH/}"
 echo "[$(date '+%H:%M:%S')] Opening: $REL_PATH" >> "$LOG"
 
 # 打开文件
-# Obsidian CLI 只能操作当前活跃连接的 vault。
-# file= 按文件名匹配（类似 wikilink），不需要带目录前缀。
-FILE_NAME=$(basename "$FILE_PATH" .md)
+# Obsidian CLI 只能操作当前活跃连接的 vault，不指定 vault 参数。
+# path= 按相对路径精确匹配，避免同名文件冲突。
+obsidian open path="$REL_PATH" >/dev/null 2>&1 &
 
-# 如果你只用一个 vault，或不关心多 vault 场景：
-obsidian open file="$FILE_NAME" >/dev/null 2>&1 &
-
-# 如果你需要指定 vault（取消注释并替换为你的 vault 名）：
+# 如需强制指定 vault（取消注释）：
 # VAULT_NAME=$(basename "$VAULT_PATH")
-# obsidian open vault="$VAULT_NAME" file="$FILE_NAME" >/dev/null 2>&1 &
+# obsidian open vault="$VAULT_NAME" path="$REL_PATH" >/dev/null 2>&1 &
 
 echo "[$(date '+%H:%M:%S')] Done" >> "$LOG"
 
