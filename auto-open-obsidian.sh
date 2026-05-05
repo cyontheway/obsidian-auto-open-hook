@@ -137,6 +137,9 @@ echo "[$(date '+%H:%M:%S')] Opening: $REL_PATH" >> "$LOG"
 # path= 按相对路径精确匹配，避免同名文件冲突。
 obsidian open path="$REL_PATH" >/dev/null 2>&1 &
 
+# 把 Obsidian 窗口带到前台（obsidian open 不一定主动切到前台）
+open -a Obsidian >/dev/null 2>&1 &
+
 # 如需强制指定 vault（取消注释）：
 # VAULT_NAME=$(basename "$VAULT_PATH")
 # obsidian open vault="$VAULT_NAME" path="$REL_PATH" >/dev/null 2>&1 &

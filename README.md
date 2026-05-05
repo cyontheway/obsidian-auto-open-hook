@@ -40,6 +40,7 @@ Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md �
 - 只响应 `.md` 文件 / Only responds to `.md` files
 - 自动转换相对路径为绝对路径 / Auto-convert relative paths to absolute
 - 使用 `path=` 精确匹配，不同子目录的同名文件不会冲突 / Uses `path=` for exact matching, no conflict with same-name files in different directories
+- 自动将 Obsidian 带到前台 / Auto-bring Obsidian to foreground
 - 后台执行，不阻塞工作流 / Non-blocking background execution
 - 完整的日志记录 / Full logging
 
