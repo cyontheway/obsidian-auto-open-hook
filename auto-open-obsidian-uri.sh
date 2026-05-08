@@ -10,6 +10,7 @@
 #
 # 如需手动指定 vault 路径（覆盖自动检测），设置环境变量：
 #   export OBSIDIAN_VAULT_PATH="/path/to/your/vault"
+LOG="/tmp/auto-open-obsidian.log"
 echo "[$(date '+%H:%M:%S')] Hook triggered" >> "$LOG"
 
 # 读取 stdin JSON（只读一次，保存到变量）
@@ -138,15 +139,16 @@ OBSIDIAN_CONFIG="$HOME/Library/Application Support/obsidian/obsidian.json"
 VAULT_ID=$(python3 -c "
 import json, os
 config = os.path.expanduser('$OBSIDIAN_CONFIG')
+found = None
 try:
     with open(config) as f:
         vaults = json.load(f).get('vaults', {})
     for vid, vinfo in vaults.items():
         if vinfo.get('path', '') == '$VAULT_PATH':
-            print(vid)
-            raise SystemExit(0)
+            found = vid
+            break
 except: pass
-print('$VAULT_NAME')
+print(found if found else '$VAULT_NAME')
 ")
 OBSIDIAN_URI=$(python3 -c "
 import urllib.parse

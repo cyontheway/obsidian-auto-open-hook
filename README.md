@@ -17,13 +17,21 @@ Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md �
 | **CLI 版** | `auto-open-obsidian.sh` | `obsidian open` CLI | 原版，依赖 Obsidian CLI |
 | **URI 版** | `auto-open-obsidian-uri.sh` | `obsidian://` URI scheme | 通过 vault ID 定位，不走 CLI 连接限制 |
 
-### CLI 版（原版）
+### CLI 版（原版）`auto-open-obsidian.sh`
 
-最简单，依赖 Obsidian CLI 的 `obsidian open` 命令。Obsidian CLI 默认连接当前活跃的 vault。
+依赖 Obsidian CLI 的 `obsidian open` 命令。打开的是 Obsidian CLI **当前连接的 vault**（通常是最后聚焦的那个窗口）。
 
-### URI 版
+**多 vault 场景下**，你有两个选择：
+- **方案 A（活跃 vault）**：不做任何配置，CLI 默认连哪个就开哪个。适合同一时间只用一个 vault 的用户。
+- **方案 B（硬编码）**：取消脚本底部 `vault=` 的注释，指定一个固定 vault。代价是写其他库的文件时，文件路径不存在于该 vault 中，会被静默跳过。
 
-使用 `obsidian://open?vault=xxx&file=yyy` URI scheme 打开文件，绕过 CLI 的活跃 vault 连接限制。自动从 `obsidian.json` 查找 vault ID（而非使用文件夹名），避免中文/特殊字符的 URI 编码问题。
+两种方案都不完美——这正是 URI 版要解决的问题。
+
+### URI 版 `auto-open-obsidian-uri.sh`
+
+使用 `obsidian://open?vault=xxx&file=yyy` URI scheme 打开文件，绕过 CLI 的活跃 vault 连接限制。自动从 `obsidian.json` 查找 vault ID（而非使用文件夹名），避免中文/特殊字符的 URI 编码问题。写入哪个库的文件，就自动定位到哪个库，无需硬编码。
+
+> **注意**：URI 版要求对应 vault 的标签页在 Obsidian 中处于打开状态，否则 Obsidian 的 workspace 恢复可能覆盖文件导航。
 
 ## 安装
 
