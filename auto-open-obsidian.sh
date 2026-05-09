@@ -2,6 +2,8 @@
 # auto-open-obsidian.sh — PostToolUse hook
 # 自动在 Edit/Write 后打开 Obsidian 文件
 #
+# 焦点行为说明见 README.md。
+#
 # ⚠️ 多 Vault 限制：Obsidian CLI 只能操作当前活跃连接的 vault。
 #    如果你同时开着多个 vault，hook 只会打开当前活跃 vault 里的文件。
 #    文件在非活跃 vault 时会被静默跳过。

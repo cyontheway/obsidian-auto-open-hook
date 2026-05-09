@@ -81,6 +81,10 @@ cp auto-open-obsidian-uri.sh ~/.claude/auto-open-obsidian.sh  # URI 版
 export OBSIDIAN_VAULT_PATH="/path/to/your/vault"
 ```
 
+### 焦点行为
+
+`auto-open-obsidian.sh` 默认会执行 `open -a Obsidian` 把 Obsidian 切到前台。如果觉得每次编辑都抢焦点烦人，注释或删除脚本中 `open -a Obsidian` 那行即可，CLI 开文件不受影响。
+
 ## 调试
 
 查看运行日志：
