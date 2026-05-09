@@ -27,6 +27,8 @@ Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md �
 - 要么接受连到哪个开哪个（方案 A），要么硬编码写死一个库（方案 B）
 - 硬编码后，写其他库的文件会被静默跳过
 
+> 💡 **焦点行为**：脚本默认会执行 `open -a Obsidian` 把窗口切到前台。如果觉得每次编辑都抢焦点烦人，注释或删除 `open -a Obsidian` 那行即可，CLI 开文件不受影响。
+
 ### URI 版 `auto-open-obsidian-uri.sh`
 
 使用 `obsidian://` URI scheme 打开文件，不走 CLI 连接限制。自动从 `obsidian.json` 查找 vault ID，写入哪个库就打开哪个库。
@@ -38,6 +40,8 @@ Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md �
 
 **局限**：
 - 极少数 vault 因 workspace/homepage 配置，在vault关闭时触发 hook 可能被配置恢复覆盖跳转，但 vault 打开后不受影响
+
+> 💡 **焦点行为**：URI 版通过 `open "obsidian://..."` 打开文件，系统会自动把 Obsidian 切到前台，无法关闭。如果不想被抢焦点，换用 CLI 版并注释其中的 `open -a Obsidian`。
 
 ## 安装
 
@@ -80,10 +84,6 @@ cp auto-open-obsidian-uri.sh ~/.claude/auto-open-obsidian.sh  # URI 版
 ```bash
 export OBSIDIAN_VAULT_PATH="/path/to/your/vault"
 ```
-
-### 焦点行为
-
-`auto-open-obsidian.sh` 默认会执行 `open -a Obsidian` 把 Obsidian 切到前台。如果觉得每次编辑都抢焦点烦人，注释或删除脚本中 `open -a Obsidian` 那行即可，CLI 开文件不受影响。
 
 ## 调试
 
