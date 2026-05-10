@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-05-11
+
+### 修复：CLI 版跨 vault 相对路径问题
+
+- `obsidian open path="$REL_PATH"` 解析相对路径时基于当前 cwd，当 hook 从其他 vault 目录触发时，相对路径找不到文件
+- 修复：执行 `obsidian open` 前先 `cd "$VAULT_PATH"`，确保路径从 vault 根目录解析
+- 同步更新 `~/.claude/auto-open-obsidian.sh`
+
 ## 2026-05-08
 
 ### 新增：URI 版（auto-open-obsidian-uri.sh）

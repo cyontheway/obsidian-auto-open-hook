@@ -135,9 +135,9 @@ REL_PATH="${FILE_PATH#$VAULT_PATH/}"
 echo "[$(date '+%H:%M:%S')] Opening: $REL_PATH" >> "$LOG"
 
 # 打开文件
-# Obsidian CLI 只能操作当前活跃连接的 vault，不指定 vault 参数。
+# Obsidian CLI 解析相对路径时基于 cwd，所以先 cd 到 vault 目录。
 # path= 按相对路径精确匹配，避免同名文件冲突。
-obsidian open path="$REL_PATH" >/dev/null 2>&1 &
+(cd "$VAULT_PATH" && obsidian open path="$REL_PATH") >/dev/null 2>&1 &
 
 # 把 Obsidian 窗口带到前台（obsidian open 不一定主动切到前台）
 open -a Obsidian >/dev/null 2>&1 &

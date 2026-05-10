@@ -27,6 +27,8 @@ Claude Code PostToolUse Hook：Edit/Write 后自动在 Obsidian 中打开 .md �
 - 要么接受连到哪个开哪个（方案 A），要么硬编码写死一个库（方案 B）
 - 硬编码后，写其他库的文件会被静默跳过
 
+**跨 vault 修复**（2026-05-11）：脚本执行 `obsidian open` 前会先 `cd` 到 vault 目录，确保相对路径能正确解析。只要 Obsidian CLI 当前连接的 vault 与文件所在 vault 一致，跨库编辑也能正常打开。
+
 > 💡 **焦点行为**：脚本默认会执行 `open -a Obsidian` 把窗口切到前台。如果觉得每次编辑都抢焦点烦人，注释或删除 `open -a Obsidian` 那行即可，CLI 开文件不受影响。
 
 ### URI 版 `auto-open-obsidian-uri.sh`
